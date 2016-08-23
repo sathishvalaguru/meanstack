@@ -3,13 +3,20 @@
 // refer - https://scotch.io/tutorials/how-to-deploy-a-node-js-app-to-heroku
 // refer - http://thejackalofjavascript.com/architecting-a-restful-node-js-app/
 // refer - https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js
+// refer - https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
+// https://github.com/messerli90/restful-node-api/blob/products/app/controllers/userCtrl.js
 
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose');
+var config = require('./server/config/config');
 var app = express();
+
+// Connect to DB
+var db = config.database;
+mongoose.connect(db);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

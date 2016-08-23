@@ -1,8 +1,15 @@
+var User = require('../models/user');
+var Product = require('../models/product');
 var products = {
 
   getAll: function(req, res) {
-    var allProducts = data; // Spoof a DB call
-    res.json(allProducts);
+    //var allProducts = data; // Spoof a DB call
+    //res.json(allProducts);
+    User.find(function(err, users) {
+      if (err) res.send(err);
+      // Success
+      res.json(users);
+    });
   },
 
   getOne: function(req, res) {
